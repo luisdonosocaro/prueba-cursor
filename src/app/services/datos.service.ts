@@ -31,7 +31,7 @@ export class DatosService {
 
   }
 
-
+  //Valida si un RUT es válido
   validarRut(rut: string): boolean {
     return validate(rut);
   }

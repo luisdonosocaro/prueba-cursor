@@ -4,7 +4,6 @@ import { RegionService } from '../../services/region.service';
 import { IPersona } from '../../interfaces/persona';
 import { IRegion } from '../../interfaces/region';
 import { DatosService } from '../../services/datos.service';
-import { IComuna } from '../../interfaces/comuna';
 
 @Component({
   selector: 'app-home',
@@ -49,6 +48,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //Datos de Personas y Regiones
+
     this.getPersonas();
     this.getRegiones();
   }
@@ -62,12 +64,17 @@ export class HomeComponent implements OnInit {
 
         //Corrección charset
         this.personas.forEach(element => {
+
+          //Corrección charset
           element.apellido = this.datosService.corregirDatos(element.apellido);
           element.direccion.calle = this.datosService.corregirDatos(element.direccion.calle);
           element.direccion.comuna.nombre = this.datosService.corregirDatos(element.direccion.comuna.nombre);
+
+          //Agrega un asterisco a RUTs inválidos
           if (this.datosService.validarRut(element.rut) == false) {
             element.rut = element.rut + '*';
           }
+
         });
 
         this.busqueda = this.personas;
@@ -88,9 +95,9 @@ export class HomeComponent implements OnInit {
         //Corrección charset
         this.regiones.forEach(element => {
           element.nombre = this.datosService.corregirDatos(element.nombre);
-
         });
 
+        //Asignación de Región a usuarios
         this.regionPersonas();
 
       })
@@ -105,6 +112,7 @@ export class HomeComponent implements OnInit {
     return this.persona = persona;
   }
 
+  //Asignación datos de región a personas
   async regionPersonas() {
 
     this.busqueda.forEach(persona => {
@@ -128,6 +136,7 @@ export class HomeComponent implements OnInit {
 
   }
 
+  //Función que filtra el listado de personas por región
   filtroRegion(region_id: any) {
 
     if (region_id == 0) {
