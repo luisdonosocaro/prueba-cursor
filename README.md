@@ -21,8 +21,9 @@ npm install
 ## Funcionamiento
 
 El ejemplo implementado tiene dos buscadores:
--Un input donde hará una búsqueda reactiva en todos los campos (utilizando la librería ng2-search-filter)
--Un select que filtrará a través de la región del usuario
+
+1. Un input donde hará una búsqueda reactiva en todos los campos (utilizando la librería ng2-search-filter)
+2. Un select que filtrará a través de la región del usuario
 
 A su vez cada usuario tiene una opción de Detalle, donde se abre un modal que muestra toda
 la información de la persona.
