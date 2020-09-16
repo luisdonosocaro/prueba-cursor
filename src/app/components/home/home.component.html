@@ -39,7 +39,8 @@
                             <td>{{persona.apellido}}</td>
                             <td [ngClass]="{'table-warning': persona.telefono.toString().length < 11 }">
                                 {{persona.telefono}}</td>
-                            <td>{{persona.rut}}</td>
+                            <td [ngClass]="{'table-warning': persona.rut[persona.rut.length-1] == '*'}">{{persona.rut}}
+                            </td>
                             <td>{{persona.activo}}</td>
                             <td><button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"
                                     (click)="datosPersona(persona)">Detalle</button>

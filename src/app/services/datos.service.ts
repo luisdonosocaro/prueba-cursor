@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IPersona } from '../interfaces/persona';
+import { validate } from 'rut.js';
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,11 @@ export class DatosService {
     );
     return unicodeString;
 
+  }
+
+
+  validarRut(rut: string): boolean {
+    return validate(rut);
   }
 
 

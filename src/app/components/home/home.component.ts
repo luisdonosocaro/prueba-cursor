@@ -63,6 +63,11 @@ export class HomeComponent implements OnInit {
         //Corrección charset
         this.personas.forEach(element => {
           element.apellido = this.datosService.corregirDatos(element.apellido);
+          element.direccion.calle = this.datosService.corregirDatos(element.direccion.calle);
+          element.direccion.comuna.nombre = this.datosService.corregirDatos(element.direccion.comuna.nombre);
+          if (this.datosService.validarRut(element.rut) == false) {
+            element.rut = element.rut + '*';
+          }
         });
 
         this.busqueda = this.personas;
@@ -83,6 +88,7 @@ export class HomeComponent implements OnInit {
         //Corrección charset
         this.regiones.forEach(element => {
           element.nombre = this.datosService.corregirDatos(element.nombre);
+
         });
 
         this.regionPersonas();
