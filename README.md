@@ -1,5 +1,16 @@
 # PruebaCursor
 
+IMPORTANTE:
+Setear API Endpoint en:
+environments/environment.ts
+
+```
+export const environment = {
+  production: false,
+  APIEndpoint: 'https://private-anon-00c6b9c012-testphonebook.apiary-mock.com' //ACTUALIZAR
+};
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
 ## Development server
