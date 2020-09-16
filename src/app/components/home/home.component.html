@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h5>Listado de Personas</h5>
+
+            <div class="form-group">
+
+                <input class="form-control my-3" type="text" placeholder="Buscar" [(ngModel)]="term">
+
+            </div>
+
+            <div class="form-group">
+
+                <select class="form-control" #region (change)="filtroRegion(region.value)">
+                    <option selected disabled>Seleccione Región</option>
+                    <option *ngFor="let region of regiones" [value]="region.id">{{region.nombre}}</option>
+                    <option value="0">Todos los resultados</option>
+
+                </select>
+            </div>
+
+            <table class="table table-sm">
+                <thead class="thead-light">
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>Rut</th>
+                    <th>Activo</th>
+                    <th>Detalle</th>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let persona of busqueda | filter: term">
+                        <ng-container *ngIf="persona.activo == 1">
+                            <td>{{persona.id}}</td>
+                            <td>{{persona.nombre}}</td>
+                            <td>{{persona.apellido}}</td>
+                            <td [ngClass]="{'table-warning': persona.telefono.toString().length < 11 }">
+                                {{persona.telefono}}</td>
+                            <td>{{persona.rut}}</td>
+                            <td>{{persona.activo}}</td>
+                            <td><button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"
+                                    (click)="datosPersona(persona)">Detalle</button>
+                            </td>
+                        </ng-container>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <!-- Modal Detalle Persona -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detalle Persona</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <ul>
+                                <li>Nombre: {{persona.nombre}}</li>
+                                <li>Apellido: {{persona.apellido}}</li>
+                                <li>Teléfono: {{persona.telefono}}</li>
+                                <li>Rut: {{persona.rut}}</li>
+                                <li>Activo: {{persona.activo}}</li>
+                                <li>Dirección: {{persona.direccion.calle}} {{persona.direccion.numero}}</li>
+                                <li>Comuna: {{persona.direccion.comuna.nombre}}</li>
+                                <li>Región: {{persona.region}} </li>
+                            </ul>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

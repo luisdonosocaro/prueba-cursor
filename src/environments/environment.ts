@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  APIEndpoint: 'https://private-anon-00c6b9c012-testphonebook.apiary-mock.com'
 };
 
 /*
