@@ -11,11 +11,21 @@ export const environment = {
   APIEndpoint: 'https://private-anon-00c6b9c012-testphonebook.apiary-mock.com' //ACTUALIZAR
 };
 ```
+
 Instalar dependencias (node_modules):
 
 ```
 npm install
 ```
+
+## Funcionamiento
+
+El ejemplo implementado tiene dos buscadores:
+-Un input donde hará una búsqueda reactiva en todos los campos (utilizando la librería ng2-search-filter)
+-Un select que filtrará a través de la región del usuario
+
+A su vez cada usuario tiene una opción de Detalle, donde se abre un modal que muestra toda
+la información de la persona.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
